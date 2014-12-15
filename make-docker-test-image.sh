@@ -49,8 +49,8 @@ ln bin/busybox bin/init
 case `uname -m` in
   x86_64)
     cp -P /lib/x86_64-linux-gnu/lib{pthread*,c*(-*),dl*(-*),nsl*(-*),nss_*,util*(-*),wrap,z}.so* lib
-    cp /lib/x86_64-linux-gnu/ld-linux-x86-64.so.2 lib
-    cp -P /usr/lib/x86_64-linux-gnu/lib{crypto,ssl}.so* lib
+    cp -P /lib/x86_64-linux-gnu/ld-linux-x86-64.so.2 lib
+    cp -P /lib/x86_64-linux-gnu/lib{crypto,ssl}.so* lib
     ;;
   ppc64le)
     cp -P /lib/powerpc64le-linux-gnu/lib{pthread*,c*(-*),dl*(-*),nsl*(-*),nss_*,util*(-*),wrap,z}.so* lib
@@ -60,6 +60,12 @@ case `uname -m` in
   ppc64)
     cp -P /usr/lib64/lib{util*(-*),readline,ssl,crypto,c*(-*),tinfo,gssapi_krb5,krb5,com_err,k5crypto,dl*(-*),z,krb5support,keyutils,resolv*(-*),pthread*(-*),selinux,pcre,lzma}.so* lib
     cp -P /lib64/ld*.so* lib
+    ;;
+  s390x)
+    cp -P /lib/s390x-linux-gnu/lib{pthread*,c*(-*),dl*(-*),nsl*(-*),util*(-*),wrap,z}.so* lib
+    cp /lib/s390x-linux-gnu/ld64.so.* lib
+    cp -P /usr/lib/s390x-linux-gnu/lib{crypto,ssl}.so* lib
+    ;;
 esac
 
 for X in console null ptmx random stdin stdout stderr tty urandom zero
